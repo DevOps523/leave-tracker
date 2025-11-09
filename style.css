@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html, body {
   height: 100%;
   margin: 0;
@@ -56,3 +57,63 @@ html, body {
 @keyframes l16 { 
   100%{transform: rotate(1turn)}
 }
+=======
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents extra scrolling */
+  background: #fff;
+}
+
+#iframe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  border: none;
+}
+
+.loading {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  z-index: 9999;
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-color: #ccc #0000;
+  animation: l16 1s infinite linear;
+}
+.loader::before,
+.loader::after {    
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+}
+.loader::before {
+  border-color: #f03355 #0000;
+  animation: inherit; 
+  animation-duration: .5s;
+  animation-direction: reverse;
+}
+.loader::after {
+  margin: 8px;
+}
+@keyframes l16 { 
+  100%{transform: rotate(1turn)}
+}
+>>>>>>> bf7f8cf (Initial commit)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker
     .register("sw.js")
@@ -5,4 +6,13 @@ if ("serviceWorker" in navigator) {
     .catch((err) => console.error("Error register SW", err));
 }else {
     console.log("There is no service worker");
+=======
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+    .register("sw.js")
+    .then((reg) => console.log("Register SW",reg))
+    .catch((err) => console.error("Error register SW", err));
+}else {
+    console.log("There is no service worker");
+>>>>>>> bf7f8cf (Initial commit)
 }
