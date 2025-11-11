@@ -1,64 +1,54 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leave Tracker</title>
-    <link rel="manifest" href="./manifest.json">
-    <link rel="shortcut icon" href="assets/personal-security-16.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Leave Tracker</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="shortcut icon" href="assets/personal-security-16.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div id="loading" class="loading">
-        <div class="loader"></div> 
-        <h2 style="color: red">Loading ...</h2>
-    </div>
-    <iframe id="iframe" onload="onLoadIframe()" style="display: none;" src="https://script.google.com/macros/s/AKfycbyJfWsXAPaYox0y84sEfOHZrqYqA8gNKposgC3yO8Whh-S99o2tGJtE2WoX4nhBg_rk/exec" 
-        frameborder="0" width="100%" height="100%"></iframe>
-</body>
+  <div id="loading" class="loading"><div class="loader"></div></div>
+  <iframe id="iframe" onload="onLoadIframe()" style="display:none;" frameborder="0" width="100%" height="100%"></iframe>
 
-<script>
-    function onLoadIframe() {
-        setTimeout(() => {
-            loading.style = "display:none";
-            iframe.style = ""
-        }, 1000);
+  <script>
+    async function loadIframe() {
+      const iframe = document.getElementById("iframe");
+      const cachedUrl = localStorage.getItem("deploymentUrl");
+
+      // 🚀 Load cached URL immediately for fast startup
+      if (cachedUrl) iframe.src = cachedUrl;
+
+      try {
+        const res = await fetch("/api/version", { cache: "no-store" });
+        if (!res.ok) throw new Error("Server unavailable");
+
+        const { deploymentUrl } = await res.json();
+
+        if (deploymentUrl && deploymentUrl !== cachedUrl) {
+          localStorage.setItem("deploymentUrl", deploymentUrl);
+          iframe.src = deploymentUrl;
+        }
+      } catch (err) {
+        console.warn("⚠️ Offline or failed to fetch version.json:", err);
+      }
     }
-</script>
 
-<script src="./script.js"></script>
-
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leave Tracker</title>
-    <link rel="manifest" href="./manifest.json">
-    <link rel="shortcut icon" href="assets/personal-security-16.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="loading" class="loading">
-        <div class="loader"></div> 
-        <h2 style="color: red">Loading ...</h2>
-    </div>
-    <iframe id="iframe" onload="onLoadIframe()" style="display: none;" src="https://script.google.com/macros/s/AKfycbyJfWsXAPaYox0y84sEfOHZrqYqA8gNKposgC3yO8Whh-S99o2tGJtE2WoX4nhBg_rk/exec" 
-        frameborder="0" width="100%" height="100%"></iframe>
-</body>
-
-<script>
     function onLoadIframe() {
-        setTimeout(() => {
-            loading.style = "display:none";
-            iframe.style = ""
-        }, 1000);
+      const loading = document.getElementById("loading");
+      const iframe = document.getElementById("iframe");
+      setTimeout(() => {
+        loading.style.display = "none";
+        iframe.style.display = "block";
+      }, 800);
     }
-</script>
 
-<script src="./script.js"></script>
+    loadIframe();
+  </script>
 
->>>>>>> bf7f8cf (Initial commit)
+  <script src="./script.js"></script>
+</body>
 </html>
+

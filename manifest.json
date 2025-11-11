@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
     "name": "Leave Tracker",
     "short_name": "Leave Tracker",
@@ -36,43 +35,4 @@
             "type": "image/png"
         }
     ]
-=======
-{
-    "name": "Leave Tracker",
-    "short_name": "Leave Tracker",
-    "start_url": "./?utm_source=web_app_manifest",
-    "display": "standalone",
-    "icons": [
-        {
-            "src": "assets/personal-security-16.png",
-            "sizes": "16x16",
-            "type": "image/png"
-        },
-        {
-            "src": "assets/personal-security-24.png",
-            "sizes": "24x24",
-            "type": "image/png"
-        },
-        {
-            "src": "assets/personal-security-32.png",
-            "sizes": "32x32",
-            "type": "image/png"
-        },
-        {
-            "src": "assets/personal-security-64.png",
-            "sizes": "64x64",
-            "type": "image/png"
-        },
-        {
-            "src": "assets/personal-security-128.png",
-            "sizes": "128x128",
-            "type": "image/png"
-        },
-        {
-            "src": "assets/personal-security-256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        }
-    ]
->>>>>>> bf7f8cf (Initial commit)
 }
